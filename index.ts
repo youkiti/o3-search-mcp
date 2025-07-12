@@ -10,14 +10,21 @@ const server = new McpServer({
   version: "0.0.1",
 });
 
-// Initialize OpenAI client
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
-
 // Configuration from environment variables
-const searchContextSize = (process.env.SEARCH_CONTEXT_SIZE || 'medium') as 'low' | 'medium' | 'high';
-const reasoningEffort = (process.env.REASONING_EFFORT || 'medium') as 'low' | 'medium' | 'high';
+const config = {
+  apiKey: process.env.OPENAI_API_KEY,
+  maxRetries: parseInt(process.env.OPENAI_MAX_RETRIES || '3'),
+  timeout: parseInt(process.env.OPENAI_API_TIMEOUT || '60000'),
+  searchContextSize: (process.env.SEARCH_CONTEXT_SIZE || 'medium') as 'low' | 'medium' | 'high',
+  reasoningEffort: (process.env.REASONING_EFFORT || 'medium') as 'low' | 'medium' | 'high',
+};
+
+// Initialize OpenAI client with retry and timeout configuration
+const openai = new OpenAI({
+  apiKey: config.apiKey,
+  maxRetries: config.maxRetries,
+  timeout: config.timeout,
+});
 
 // Define the o3-search tool
 server.tool(
@@ -29,10 +36,10 @@ server.tool(
       const response = await openai.responses.create({
         model: 'o3',
         input,
-        tools: [{ type: 'web_search_preview', search_context_size: searchContextSize }],
+        tools: [{ type: 'web_search_preview', search_context_size: config.searchContextSize }],
         tool_choice: 'auto',
         parallel_tool_calls: true,
-        reasoning: { effort: reasoningEffort },
+        reasoning: { effort: config.reasoningEffort },
       })
 
       return {
