@@ -49,13 +49,13 @@ json:
 
 If you want to download and run the code locally:
 
-   ```bash
-   # setup
-   git clone git@github.com:yoshiko-pg/o3-search-mcp.git
-   cd o3-search-mcp
-   pnpm install
-   pnpm build
-   ```
+```bash
+# setup
+git clone git@github.com:yoshiko-pg/o3-search-mcp.git
+cd o3-search-mcp
+pnpm install
+pnpm build
+```
 
 Claude Code:
 

@@ -13,10 +13,16 @@ const server = new McpServer({
 // Configuration from environment variables
 const config = {
   apiKey: process.env.OPENAI_API_KEY,
-  maxRetries: parseInt(process.env.OPENAI_MAX_RETRIES || '3'),
-  timeout: parseInt(process.env.OPENAI_API_TIMEOUT || '60000'),
-  searchContextSize: (process.env.SEARCH_CONTEXT_SIZE || 'medium') as 'low' | 'medium' | 'high',
-  reasoningEffort: (process.env.REASONING_EFFORT || 'medium') as 'low' | 'medium' | 'high',
+  maxRetries: parseInt(process.env.OPENAI_MAX_RETRIES || "3"),
+  timeout: parseInt(process.env.OPENAI_API_TIMEOUT || "60000"),
+  searchContextSize: (process.env.SEARCH_CONTEXT_SIZE || "medium") as
+    | "low"
+    | "medium"
+    | "high",
+  reasoningEffort: (process.env.REASONING_EFFORT || "medium") as
+    | "low"
+    | "medium"
+    | "high",
 };
 
 // Initialize OpenAI client with retry and timeout configuration
@@ -30,17 +36,28 @@ const openai = new OpenAI({
 server.tool(
   "o3-search",
   `An AI agent with advanced web search capabilities. Useful for finding latest information and troubleshooting errors. Supports natural language queries.`,
-  { input: z.string().describe('Ask questions, search for information, or consult about complex problems in English.'), },
+  {
+    input: z
+      .string()
+      .describe(
+        "Ask questions, search for information, or consult about complex problems in English.",
+      ),
+  },
   async ({ input }) => {
     try {
       const response = await openai.responses.create({
-        model: 'o3',
+        model: "o3",
         input,
-        tools: [{ type: 'web_search_preview', search_context_size: config.searchContextSize }],
-        tool_choice: 'auto',
+        tools: [
+          {
+            type: "web_search_preview",
+            search_context_size: config.searchContextSize,
+          },
+        ],
+        tool_choice: "auto",
         parallel_tool_calls: true,
         reasoning: { effort: config.reasoningEffort },
-      })
+      });
 
       return {
         content: [
@@ -61,7 +78,7 @@ server.tool(
         ],
       };
     }
-  }
+  },
 );
 
 async function main() {

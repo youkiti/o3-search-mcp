@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.0.4] - 2025-01-12
 
 ### Added
+
 - Configurable retry and timeout for OpenAI API (#6)
 - MCP server badge (#1)
 - MIT LICENSE file
@@ -17,6 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Local setup configuration
 
 ### Thanks
+
 - @wildgeece96 for adding configurable retry and timeout for OpenAI API (#6)
 - @punkpeye for adding MCP server badge (#1)
 
