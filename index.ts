@@ -35,7 +35,7 @@ const openai = new OpenAI({
 // Define the o3-search tool
 server.tool(
   "o3-search",
-  `An AI agent with advanced web search capabilities. Useful for finding latest information and troubleshooting errors. Supports natural language queries.`,
+  `An AI agent with advanced web search capabilities. Useful for finding the latest information, troubleshooting errors, and discussing ideas or design challenges. Supports natural language queries.`,
   {
     input: z
       .string()
