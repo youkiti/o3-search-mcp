@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.5] - 2025-01-16
+
+### Changed
+
+- Updated tool description for better clarity
+- Formatted code with Prettier for consistency
+
 ## [0.0.4] - 2025-01-12
 
 ### Added
@@ -22,5 +29,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - @wildgeece96 for adding configurable retry and timeout for OpenAI API (#6)
 - @punkpeye for adding MCP server badge (#1)
 
-[Unreleased]: https://github.com/yoshiko-pg/o3-search-mcp/compare/v0.0.4...HEAD
+[Unreleased]: https://github.com/yoshiko-pg/o3-search-mcp/compare/v0.0.5...HEAD
+[0.0.5]: https://github.com/yoshiko-pg/o3-search-mcp/compare/v0.0.4...v0.0.5
 [0.0.4]: https://github.com/yoshiko-pg/o3-search-mcp/compare/v0.0.3...v0.0.4
