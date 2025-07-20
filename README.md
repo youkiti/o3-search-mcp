@@ -1,10 +1,38 @@
 # o3-search-mcp
 
-An MCP (Model Context Protocol) server that provides web search capabilities using OpenAI's o3 model. The `o3-search` tool accepts text queries and returns AI-powered search results.
+An MCP server that brings the power of OpenAI's o3 model to your AI agents, enabling them to perform intelligent web searches with natural language queries.
 
 <a href="https://glama.ai/mcp/servers/@yoshiko-pg/o3-search-mcp">
   <img width="380" height="200" src="https://glama.ai/mcp/servers/@yoshiko-pg/o3-search-mcp/badge" alt="o3-search MCP server" />
 </a>
+
+## Usage Examples
+
+Once installed, your AI agent can use the `o3-search` tool to perform web searches.
+For instance, try giving instructions like this:
+
+### 🐛 When debugging gets tough
+Use "ask o3" to find solutions from GitHub issues and Stack Overflow:
+```
+"I'm getting a 'Module not found' error in Next.js 14. Ask o3 for recent solutions"
+"Debug this WebSocket connection issue. Try asking o3 for help"
+```
+
+### 🧩 When tackling complex tasks
+Add "consult o3 if you get stuck" to your requests:
+```
+"Implement a distributed caching system with Redis. If you encounter difficulties, consult o3"
+"Create a real-time collaborative editor. Ask o3 for help if you get stuck"
+```
+
+### 📚 For latest library info and migration guides
+Stay up-to-date with "ask o3":
+```
+"How do I migrate from React Router v5 to v6? Ask o3 for the latest migration guide"
+"What's the current best practice for state management in React? Ask o3 for recent recommendations"
+```
+
+When you make a request to your coding agent, it can autonomously consult o3 by using the MCP interface to exchange natural language queries and responses. Your agent and o3 work together in real time to help you solve problems.
 
 ## Installation
 
