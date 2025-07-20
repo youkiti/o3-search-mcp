@@ -1,47 +1,63 @@
-# o3-search-mcp
-
-An MCP server that brings the power of OpenAI's o3 model to your AI agents, enabling them to perform intelligent web searches with natural language queries.
-
+<p align="center">
 <a href="https://glama.ai/mcp/servers/@yoshiko-pg/o3-search-mcp">
   <img width="380" height="200" src="https://glama.ai/mcp/servers/@yoshiko-pg/o3-search-mcp/badge" alt="o3-search MCP server" />
 </a>
+</p>
 
-## Usage Examples
+<p align="center">
+  English | <a href="./README.ja.md">日本語</a> | <a href="./README.zh.md">简体中文</a> | <a href="./README.ko.md">한국어</a>
+</p>
 
-Once installed, your AI agent can use the `o3-search` tool to perform web searches.
-For instance, try giving instructions like this:
+# o3-search-mcp
 
-### 🐛 When debugging gets tough
-Use "ask o3" to find solutions from GitHub issues and Stack Overflow:
+MCP server that enables the use of OpenAI's o3 model and its powerful web search capabilities.
+By registering it with any AI coding agent, the agent can autonomously consult with the o3 model to solve complex problems.
+
+## Use Cases
+
+### 🐛 When you're stuck debugging
+
+o3's web search can scan a wide range of sources, including GitHub issues and Stack Overflow, significantly increasing the chances of resolving niche problems. Example prompts:
+
 ```
-"I'm getting a 'Module not found' error in Next.js 14. Ask o3 for recent solutions"
-"Debug this WebSocket connection issue. Try asking o3 for help"
+> I'm getting the following error on startup, please fix it. If it's too difficult, ask o3.
+> [Paste error message here]
+```
+```
+> The WebSocket connection isn't working. Please debug it. If you don't know how, ask o3.
+```
+
+### 📚 When you want to reference the latest library information
+
+You can get answers from the powerful web search even when there's no well-organized documentation. Example prompts:
+
+```
+> I want to upgrade this library to v2. Proceed while consulting with o3.
+```
+
+```
+> I was told this option for this library doesn't exist. It might have been removed. Ask o3 what to specify instead and replace it.
 ```
 
 ### 🧩 When tackling complex tasks
-Add "consult o3 if you get stuck" to your requests:
+
+In addition to search, you can also use it as a sounding board for design. Example prompts:
+
 ```
-"Implement a distributed caching system with Redis. If you encounter difficulties, consult o3"
-"Create a real-time collaborative editor. Ask o3 for help if you get stuck"
+> I want to create a collaborative editor, so please design it. Also, ask o3 for a design review and discuss if necessary.
 ```
 
-### 📚 For latest library info and migration guides
-Stay up-to-date with "ask o3":
-```
-"How do I migrate from React Router v5 to v6? Ask o3 for the latest migration guide"
-"What's the current best practice for state management in React? Ask o3 for recent recommendations"
-```
-
-When you make a request to your coding agent, it can autonomously consult o3 by using the MCP interface to exchange natural language queries and responses. Your agent and o3 work together in real time to help you solve problems.
+Also, since it's provided as an MCP server, the AI agent may decide on its own to talk to o3 when it deems it necessary, without any instructions from you. This will dramatically expand the range of problems it can solve on its own!
 
 ## Installation
 
-### Using npx (Recommended)
+### npx (Recommended)
 
 Claude Code:
 
-```
-$ claude mcp add o3 -s user \
+```sh
+$ claude mcp add o3 \
+	-s user \  # If you omit this line, it will be installed in the project scope
 	-e OPENAI_API_KEY=your-api-key \
 	-e SEARCH_CONTEXT_SIZE=medium \
 	-e REASONING_EFFORT=medium \
@@ -65,7 +81,7 @@ json:
         "REASONING_EFFORT": "medium",
         // Optional: API timeout in milliseconds (default: 60000)
         "OPENAI_API_TIMEOUT": "60000",
-        // Optional: Maximum retry attempts (default: 3)
+        // Optional: Maximum number of retries (default: 3)
         "OPENAI_MAX_RETRIES": "3"
       }
     }
@@ -73,12 +89,11 @@ json:
 }
 ```
 
-### Local Development Setup
+### Local Setup
 
-If you want to download and run the code locally:
+If you want to download the code and run it locally:
 
 ```bash
-# setup
 git clone git@github.com:yoshiko-pg/o3-search-mcp.git
 cd o3-search-mcp
 pnpm install
@@ -87,8 +102,9 @@ pnpm build
 
 Claude Code:
 
-```
-$ claude mcp add o3 -s user \
+```sh
+$ claude mcp add o3 \
+	-s user \  # If you omit this line, it will be installed in the project scope
 	-e OPENAI_API_KEY=your-api-key \
 	-e SEARCH_CONTEXT_SIZE=medium \
 	-e REASONING_EFFORT=medium \
@@ -112,7 +128,7 @@ json:
         "REASONING_EFFORT": "medium",
         // Optional: API timeout in milliseconds (default: 60000)
         "OPENAI_API_TIMEOUT": "60000",
-        // Optional: Maximum retry attempts (default: 3)
+        // Optional: Maximum number of retries (default: 3)
         "OPENAI_MAX_RETRIES": "3"
       }
     }
@@ -120,20 +136,18 @@ json:
 }
 ```
 
-## Configuration
+## Environment Variables
 
-### Environment Variables
+| Environment Variable | Options | Default | Description |
+| --- | --- | --- | --- |
+| `OPENAI_API_KEY` | Required | - | OpenAI API Key |
+| `SEARCH_CONTEXT_SIZE` | Optional | `medium` | Controls the search context size<br>Values: `low`, `medium`, `high` |
+| `REASONING_EFFORT` | Optional | `medium` | Controls the reasoning effort level<br>Values: `low`, `medium`, `high` |
+| `OPENAI_API_TIMEOUT` | Optional | `60000` | API request timeout in milliseconds<br>Example: `120000` for 2 minutes |
+| `OPENAI_MAX_RETRIES` | Optional | `3` | Maximum number of retries for failed requests<br>The SDK automatically retries on rate limits (429), server errors (5xx), and connection errors |
 
-- **OPENAI_API_KEY** (required): Your OpenAI API key
-- **SEARCH_CONTEXT_SIZE** (optional): Controls the search context size
-  - Values: `low`, `medium`, `high`
-  - Default: `medium`
-- **REASONING_EFFORT** (optional): Controls the reasoning effort level
-  - Values: `low`, `medium`, `high`
-  - Default: `medium`
-- **OPENAI_API_TIMEOUT** (optional): API request timeout in milliseconds
-  - Default: `60000` (60 seconds)
-  - Example: `120000` for 2 minutes
-- **OPENAI_MAX_RETRIES** (optional): Maximum number of retry attempts for failed requests
-  - Default: `3`
-  - The SDK automatically retries on rate limits (429), server errors (5xx), and connection errors
+## Notes
+
+To use the o3 model from the OpenAI API, you need to either raise your tier to 4 or verify your organization.
+If you register an API key that is not yet enabled for o3 with this MCP, calls will result in an error.
+Reference: https://help.openai.com/en/articles/10362446-api-access-to-o1-o3-and-o4-models
