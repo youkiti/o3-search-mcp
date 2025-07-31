@@ -1,17 +1,30 @@
-<p align="center">
-<a href="https://glama.ai/mcp/servers/@yoshiko-pg/o3-search-mcp">
-  <img width="380" height="200" src="https://glama.ai/mcp/servers/@yoshiko-pg/o3-search-mcp/badge" alt="o3-search MCP server" />
-</a>
-</p>
-
-<p align="center">
-  <a href="./README.md">English</a> | 日本語 | <a href="./README.zh.md">简体中文</a> | <a href="./README.ko.md">한국어</a>
-</p>
-
 # o3-search-mcp
+
+<div align="center">
+  <p><a href="./README.md">English</a> | 日本語 | <a href="./README.zh.md">简体中文</a> | <a href="./README.ko.md">한국어</a></p>
+
+[![Verified on MseeP](https://mseep.ai/badge.svg)](https://mseep.ai/app/810f04ea-e685-4840-ae20-6a70deb7407a)
+
+</div>
+
 
 OpenAIのo3モデルとその強力なWeb検索機能を使えるようにするMCPサーバー。  
 任意のAIコーディングエージェントに登録することで、コーディングエージェントが自律的にo3モデルと相談し、複雑な問題を解決できるようになります。
+
+<table>
+	<tr>
+		<td width="50%">
+			<a href="https://mseep.ai/app/yoshiko-pg-o3-search-mcp">
+<img src="https://mseep.net/pr/yoshiko-pg-o3-search-mcp-badge.png" alt="MseeP.ai Security Assessment Badge" />
+</a>
+		</td>
+		<td width="50%">
+			<a href="https://glama.ai/mcp/servers/@yoshiko-pg/o3-search-mcp">
+  <img src="https://glama.ai/mcp/servers/@yoshiko-pg/o3-search-mcp/badge" alt="o3-search MCP server" />
+</a>
+		</td>
+	</tr>
+</table>
 
 ## 使用例
 

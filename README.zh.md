@@ -1,17 +1,30 @@
-<p align="center">
-<a href="https://glama.ai/mcp/servers/@yoshiko-pg/o3-search-mcp">
-  <img width="380" height="200" src="https://glama.ai/mcp/servers/@yoshiko-pg/o3-search-mcp/badge" alt="o3-search MCP server" />
-</a>
-</p>
-
-<p align="center">
-  <a href="./README.md">English</a> | <a href="./README.ja.md">日本語</a> | 简体中文 | <a href="./README.ko.md">한국어</a>
-</p>
-
 # o3-search-mcp
+
+<div align="center">
+  <p><a href="./README.md">English</a> | <a href="./README.ja.md">日本語</a> | 简体中文 | <a href="./README.ko.md">한국어</a></p>
+
+[![Verified on MseeP](https://mseep.ai/badge.svg)](https://mseep.ai/app/810f04ea-e685-4840-ae20-6a70deb7407a)
+
+</div>
+
 
 一个MCP服务器，可以使用OpenAI的o3模型及其强大的Web搜索功能。
 通过将其注册到任何AI编码代理，该代理可以自主地与o3模型协商，以解决复杂的问题。
+
+<table>
+	<tr>
+		<td width="50%">
+			<a href="https://mseep.ai/app/yoshiko-pg-o3-search-mcp">
+<img src="https://mseep.net/pr/yoshiko-pg-o3-search-mcp-badge.png" alt="MseeP.ai Security Assessment Badge" />
+</a>
+		</td>
+		<td width="50%">
+			<a href="https://glama.ai/mcp/servers/@yoshiko-pg/o3-search-mcp">
+  <img src="https://glama.ai/mcp/servers/@yoshiko-pg/o3-search-mcp/badge" alt="o3-search MCP server" />
+</a>
+		</td>
+	</tr>
+</table>
 
 ## 使用案例
 

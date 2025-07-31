@@ -1,19 +1,31 @@
-[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/yoshiko-pg-o3-search-mcp-badge.png)](https://mseep.ai/app/yoshiko-pg-o3-search-mcp)
-
-<p align="center">
-<a href="https://glama.ai/mcp/servers/@yoshiko-pg/o3-search-mcp">
-  <img width="380" height="200" src="https://glama.ai/mcp/servers/@yoshiko-pg/o3-search-mcp/badge" alt="o3-search MCP server" />
-</a>
-</p>
-
-<p align="center">
-  English | <a href="./README.ja.md">日本語</a> | <a href="./README.zh.md">简体中文</a> | <a href="./README.ko.md">한국어</a>
-</p>
-
 # o3-search-mcp
+
+<div align="center">
+  <p>English | <a href="./README.ja.md">日本語</a> | <a href="./README.zh.md">简体中文</a> | <a href="./README.ko.md">한국어</a></p>
+
+[![Verified on MseeP](https://mseep.ai/badge.svg)](https://mseep.ai/app/810f04ea-e685-4840-ae20-6a70deb7407a)
+
+</div>
+
 
 MCP server that enables the use of OpenAI's o3 model and its powerful web search capabilities.
 By registering it with any AI coding agent, the agent can autonomously consult with the o3 model to solve complex problems.
+
+<table>
+	<tr>
+		<td width="50%">
+			<a href="https://mseep.ai/app/yoshiko-pg-o3-search-mcp">
+<img src="https://mseep.net/pr/yoshiko-pg-o3-search-mcp-badge.png" alt="MseeP.ai Security Assessment Badge" />
+</a>
+		</td>
+		<td width="50%">
+			<a href="https://glama.ai/mcp/servers/@yoshiko-pg/o3-search-mcp">
+  <img src="https://glama.ai/mcp/servers/@yoshiko-pg/o3-search-mcp/badge" alt="o3-search MCP server" />
+</a>
+		</td>
+	</tr>
+</table>
+
 
 ## Use Cases
 
