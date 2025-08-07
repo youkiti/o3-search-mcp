@@ -6,7 +6,7 @@ import { z } from "zod";
 
 // Create server instance
 const server = new McpServer({
-  name: "o3-search-mcp",
+  name: "gpt5-search-mcp",
   version: "0.0.1",
 });
 
@@ -23,6 +23,14 @@ const config = {
     | "low"
     | "medium"
     | "high",
+  textVerbosity: (process.env.TEXT_VERBOSITY || "medium") as
+    | "low"
+    | "medium"
+    | "high",
+  reasoningSummary: (process.env.REASONING_SUMMARY || "auto") as
+    | "auto"
+    | "detailed"
+    | "concise",
 };
 
 // Initialize OpenAI client with retry and timeout configuration
@@ -32,10 +40,10 @@ const openai = new OpenAI({
   timeout: config.timeout,
 });
 
-// Define the o3-search tool
+// Define the gpt5-search tool
 server.tool(
-  "o3-search",
-  `An AI agent with advanced web search capabilities. Useful for finding the latest information, troubleshooting errors, and discussing ideas or design challenges. Supports natural language queries.`,
+  "gpt5-search",
+  `An AI agent with advanced web search capabilities powered by GPT-5. Useful for finding the latest information, troubleshooting errors, and discussing ideas or design challenges. Supports natural language queries.`,
   {
     input: z
       .string()
@@ -46,17 +54,31 @@ server.tool(
   async ({ input }) => {
     try {
       const response = await openai.responses.create({
-        model: "o3",
-        input,
+        model: "gpt-5",
+        input: [{
+          type: "message",
+          content: input,
+          role: "user"
+        }],
+        text: {
+          format: {
+            type: "text"
+          }
+        },
+        reasoning: {
+          effort: config.reasoningEffort,
+          summary: config.reasoningSummary
+        },
         tools: [
           {
             type: "web_search_preview",
-            search_context_size: config.searchContextSize,
-          },
+            user_location: {
+              type: "approximate"
+            },
+            search_context_size: config.searchContextSize
+          }
         ],
-        tool_choice: "auto",
-        parallel_tool_calls: true,
-        reasoning: { effort: config.reasoningEffort },
+        store: false
       });
 
       return {

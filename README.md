@@ -1,4 +1,4 @@
-# o3-search-mcp
+# gpt5-search-mcp
 
 <div align="center">
   <p>English | <a href="./README.ja.md">日本語</a> | <a href="./README.zh.md">简体中文</a> | <a href="./README.ko.md">한국어</a></p>
@@ -8,8 +8,8 @@
 </div>
 
 
-MCP server that enables the use of OpenAI's o3 model and its powerful web search capabilities.
-By registering it with any AI coding agent, the agent can autonomously consult with the o3 model to solve complex problems.
+MCP server that enables the use of OpenAI's gpt-5 model and its powerful web search capabilities.
+By registering it with any AI coding agent, the agent can autonomously consult with the gpt-5 model to solve complex problems.
 
 <table>
 	<tr>
@@ -31,14 +31,14 @@ By registering it with any AI coding agent, the agent can autonomously consult w
 
 ### 🐛 When you're stuck debugging
 
-o3's web search can scan a wide range of sources, including GitHub issues and Stack Overflow, significantly increasing the chances of resolving niche problems. Example prompts:
+gpt-5's web search can scan a wide range of sources, including GitHub issues and Stack Overflow, significantly increasing the chances of resolving niche problems. Example prompts:
 
 ```
-> I'm getting the following error on startup, please fix it. If it's too difficult, ask o3.
+> I'm getting the following error on startup, please fix it. If it's too difficult, ask gpt-5.
 > [Paste error message here]
 ```
 ```
-> The WebSocket connection isn't working. Please debug it. If you don't know how, ask o3.
+> The WebSocket connection isn't working. Please debug it. If you don't know how, ask gpt-5.
 ```
 
 ### 📚 When you want to reference the latest library information
@@ -46,11 +46,11 @@ o3's web search can scan a wide range of sources, including GitHub issues and St
 You can get answers from the powerful web search even when there's no well-organized documentation. Example prompts:
 
 ```
-> I want to upgrade this library to v2. Proceed while consulting with o3.
+> I want to upgrade this library to v2. Proceed while consulting with gpt-5.
 ```
 
 ```
-> I was told this option for this library doesn't exist. It might have been removed. Ask o3 what to specify instead and replace it.
+> I was told this option for this library doesn't exist. It might have been removed. Ask gpt-5 what to specify instead and replace it.
 ```
 
 ### 🧩 When tackling complex tasks
@@ -58,10 +58,10 @@ You can get answers from the powerful web search even when there's no well-organ
 In addition to search, you can also use it as a sounding board for design. Example prompts:
 
 ```
-> I want to create a collaborative editor, so please design it. Also, ask o3 for a design review and discuss if necessary.
+> I want to create a collaborative editor, so please design it. Also, ask gpt-5 for a design review and discuss if necessary.
 ```
 
-Also, since it's provided as an MCP server, the AI agent may decide on its own to talk to o3 when it deems it necessary, without any instructions from you. This will dramatically expand the range of problems it can solve on its own!
+Also, since it's provided as an MCP server, the AI agent may decide on its own to talk to gpt-5 when it deems it necessary, without any instructions from you. This will dramatically expand the range of problems it can solve on its own!
 
 ## Installation
 
@@ -70,7 +70,7 @@ Also, since it's provided as an MCP server, the AI agent may decide on its own t
 Claude Code:
 
 ```sh
-$ claude mcp add o3 \
+$ claude mcp add gpt5 \
 	-s user \  # If you omit this line, it will be installed in the project scope
 	-e OPENAI_API_KEY=your-api-key \
 	-e SEARCH_CONTEXT_SIZE=medium \
@@ -85,9 +85,9 @@ json:
 ```jsonc
 {
   "mcpServers": {
-    "o3-search": {
+    "gpt5-search": {
       "command": "npx",
-      "args": ["o3-search-mcp"],
+      "args": ["gpt5-search-mcp"],
       "env": {
         "OPENAI_API_KEY": "your-api-key",
         // Optional: low, medium, high (default: medium)
@@ -108,8 +108,8 @@ json:
 If you want to download the code and run it locally:
 
 ```bash
-git clone git@github.com:yoshiko-pg/o3-search-mcp.git
-cd o3-search-mcp
+git clone git@github.com:yoshiko-pg/gpt5-search-mcp.git
+cd gpt5-search-mcp
 pnpm install
 pnpm build
 ```
@@ -117,7 +117,7 @@ pnpm build
 Claude Code:
 
 ```sh
-$ claude mcp add o3 \
+$ claude mcp add gpt5 \
 	-s user \  # If you omit this line, it will be installed in the project scope
 	-e OPENAI_API_KEY=your-api-key \
 	-e SEARCH_CONTEXT_SIZE=medium \
@@ -132,9 +132,9 @@ json:
 ```jsonc
 {
   "mcpServers": {
-    "o3-search": {
+    "gpt5-search": {
       "command": "node",
-      "args": ["/path/to/o3-search-mcp/build/index.js"],
+      "args": ["/path/to/gpt5-search-mcp/build/index.js"],
       "env": {
         "OPENAI_API_KEY": "your-api-key",
         // Optional: low, medium, high (default: medium)
@@ -157,11 +157,13 @@ json:
 | `OPENAI_API_KEY` | Required | - | OpenAI API Key |
 | `SEARCH_CONTEXT_SIZE` | Optional | `medium` | Controls the search context size<br>Values: `low`, `medium`, `high` |
 | `REASONING_EFFORT` | Optional | `medium` | Controls the reasoning effort level<br>Values: `low`, `medium`, `high` |
+| `TEXT_VERBOSITY` | Optional | `medium` | Controls the text output verbosity<br>Values: `low`, `medium`, `high` |
+| `REASONING_SUMMARY` | Optional | `auto` | Controls the reasoning summary format<br>Values: `auto`, `detailed`, `concise` |
 | `OPENAI_API_TIMEOUT` | Optional | `60000` | API request timeout in milliseconds<br>Example: `120000` for 2 minutes |
 | `OPENAI_MAX_RETRIES` | Optional | `3` | Maximum number of retries for failed requests<br>The SDK automatically retries on rate limits (429), server errors (5xx), and connection errors |
 
 ## Notes
 
-To use the o3 model from the OpenAI API, you need to either raise your tier to 4 or verify your organization.
-If you register an API key that is not yet enabled for o3 with this MCP, calls will result in an error.
-Reference: https://help.openai.com/en/articles/10362446-api-access-to-o1-o3-and-o4-models
+To use the gpt-5 model from the OpenAI API, you need to have appropriate access permissions.
+If you register an API key that is not yet enabled for gpt-5 with this MCP, calls will result in an error.
+Reference: Check OpenAI documentation for the latest access requirements for gpt-5.
